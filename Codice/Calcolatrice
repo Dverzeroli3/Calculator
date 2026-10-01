@@ -1,55 +1,74 @@
-import java.util.logging.Logger;
-import java.util.logging.Level;
-
-public class Calculator{
-    private static final Logger logger = Logger.getLogger(Calculator.class.getName());
+public class Calculator {
     
     private Calculator() {}
     
-    static int sum(int x, int y){
-        logger.log(Level.INFO, "Performing sum: " + x + " + " + y);
-        int result = x + y;
-        logger.log(Level.INFO, "Sum result: " + result);
-        return result;
+    // Operazioni basilari
+    static double sum(double x, double y) {
+        return x + y;
     }
     
-    static int prod(int x, int y){
-        logger.log(Level.INFO, "Performing product: " + x + " * " + y);
-        int result = x * y;
-        logger.log(Level.INFO, "Product result: " + result);
-        return result;
+    static double subtract(double x, double y) {
+        return x - y;
     }
     
-    static int divide(int x, int y) {
-        logger.log(Level.INFO, "Performing division: " + x + " / " + y);
+    static double product(double x, double y) {
+        return x * y;
+    }
+    
+    static double divide(double x, double y) {
         if (y == 0) {
-            logger.log(Level.SEVERE, "Division by zero attempted!");
-            throw new IllegalArgumentException("Cannot divide by zero");
+            throw new IllegalArgumentException("Divisione per zero non consentita");
         }
-        int result = x / y;
-        logger.log(Level.INFO, "Division result: " + result);
-        return result;
+        return x / y;
+    }
+    
+    static double modulo(double x, double y) {
+        if (y == 0) {
+            throw new IllegalArgumentException("Modulo per zero non consentito");
+        }
+        return x % y;
+    }
+    
+    // Operazioni avanzate
+    static double power(double base, double exponent) {
+        return Math.pow(base, exponent);
+    }
+    
+    static double squareRoot(double x) {
+        if (x < 0) {
+            throw new IllegalArgumentException("Radice quadrata di numero negativo non consentita");
+        }
+        return Math.sqrt(x);
+    }
+    
+    static double absoluteValue(double x) {
+        return Math.abs(x);
     }
     
     static double logarithm(double x) {
-        logger.log(Level.INFO, "Performing logarithm (base 10): log(" + x + ")");
         if (x <= 0) {
-            logger.log(Level.SEVERE, "Logarithm of non-positive number attempted!");
-            throw new IllegalArgumentException("Logarithm requires positive number");
+            throw new IllegalArgumentException("Logaritmo richiede numero positivo");
         }
-        double result = Math.log10(x);
-        logger.log(Level.INFO, "Logarithm result: " + result);
-        return result;
+        return Math.log10(x);
     }
     
     static double naturalLogarithm(double x) {
-        logger.log(Level.INFO, "Performing natural logarithm: ln(" + x + ")");
         if (x <= 0) {
-            logger.log(Level.SEVERE, "Natural logarithm of non-positive number attempted!");
-            throw new IllegalArgumentException("Natural logarithm requires positive number");
+            throw new IllegalArgumentException("Logaritmo naturale richiede numero positivo");
         }
-        double result = Math.log(x);
-        logger.log(Level.INFO, "Natural logarithm result: " + result);
-        return result;
+        return Math.log(x);
+    }
+    
+    // Operazioni trigonometriche
+    static double sine(double x) {
+        return Math.sin(x);
+    }
+    
+    static double cosine(double x) {
+        return Math.cos(x);
+    }
+    
+    static double tangent(double x) {
+        return Math.tan(x);
     }
 }
